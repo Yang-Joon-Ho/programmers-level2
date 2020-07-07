@@ -1,0 +1,23 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+bool cmp(string a, string b) {
+    return a + b > b + a;
+}
+
+string solution(vector<int> numbers) {
+    string answer = "";
+     vector<string> tmp;
+    for(auto num : numbers){
+        tmp.push_back(to_string(num));
+    }
+    sort(tmp.begin(),tmp.end(),cmp);
+    for(auto s : tmp){
+        answer+=s;
+    }
+    if((tmp.at(0))=="0") return "0";
+    return answer;
+}
+
+/*sort()함수의 세번째 인자를 커스텀 함수로 하여 두 문자열(숫자)를 합쳤을 때, 가장 큰 순서로 정렬한다. */
